@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nahuelbuta Gestión Inmobiliaria — Corretaje de propiedades, arquitectura, videos de drone y consultoría inmobiliaria en la Provincia de Arauco, Chile.">
+    <meta name="keywords" content="inmobiliaria, terrenos, galpones, propiedades, Arauco, Lebu, Cañete, Chile, arquitectura, drone">
+    <title>Nahuelbuta Gestión Inmobiliaria | Provincia de Arauco</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="tres-pinos-data.js" defer></script>
+</head>
+<body>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo" id="nav-logo">
+                <div class="logo-text">
+                    <span class="logo-name"><span class="char-n">N</span><span class="char-a-roof">a</span>huelbuta</span>
+                    <span class="logo-sub">Gestión Inmobiliaria</span>
+                </div>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#hero" class="nav-link active">Inicio</a></li>
+                <li><a href="#" class="nav-link" id="link-about">Nosotros</a></li>
+                <li><a href="#" class="nav-link" id="link-services">Servicios</a></li>
+                <li><a href="#properties" class="nav-link">Propiedades</a></li>
+
+                <li><a href="#contact" class="nav-link nav-link-cta">Contactar</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <img src="assets/images/hero.png" alt="Cordillera de Nahuelbuta vista aérea" class="hero-img">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge" data-animate="fade-up">
+                <span class="badge-dot"></span>
+                Provincia de Arauco, Chile
+            </div>
+            <h1 class="hero-title" data-animate="fade-up" data-delay="100">
+                Inversiones con<br>
+                <span class="hero-accent">Visión de Futuro</span>
+            </h1>
+            <p class="hero-description" data-animate="fade-up" data-delay="200">
+                Arquitectura de vanguardia, gestión técnica y tecnología de drone unidos para transformar 
+                el potencial inmobiliario del sur de Chile.
+            </p>
+            <div class="hero-actions" data-animate="fade-up" data-delay="300">
+                <a href="#properties" class="btn btn-primary">
+                    Explorar Propiedades
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="#" class="btn btn-ghost" id="hero-about-link">
+                    Sobre Nosotros
+                </a>
+            </div>
+            <div class="hero-stats" data-animate="fade-up" data-delay="400">
+                <div class="stat">
+                    <span class="stat-number" data-count="15">0</span><span class="stat-suffix">+</span>
+                    <span class="stat-label">Propiedades</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number" data-count="4">0</span>
+                    <span class="stat-label">Comunas</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number" data-count="100">0</span><span class="stat-suffix">%</span>
+                    <span class="stat-label">Compromiso</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+
+
+    <!-- ==================== PROPERTIES SECTION ==================== -->
+    <section class="properties" id="properties">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Portafolio</span>
+                <h2 class="section-title">Propiedades <span class="text-accent">Destacadas</span></h2>
+                <p class="section-subtitle">Selección curada de activos con alto potencial de inversión en la Provincia de Arauco</p>
+            </div>
+
+            <div class="properties-filter" data-animate="fade-up" data-delay="100">
+                <button class="filter-btn active" data-filter="all" id="filter-all">Todas</button>
+                <button class="filter-btn" data-filter="terreno" id="filter-terreno">Terrenos</button>
+                <button class="filter-btn" data-filter="casa" id="filter-casa">Casas & Negocios</button>
+                <button class="filter-btn" data-filter="industrial" id="filter-industrial">Industrial</button>
+                <button class="filter-btn" data-filter="comercial" id="filter-comercial">Comercial</button>
+            </div>
+
+            <div class="properties-grid" id="properties-grid">
+                <!-- Project Card: Tres Pinos (REAL PROJECT) -->
+                <article class="property-card property-card-featured" data-category="terreno" data-animate="fade-up" data-delay="0">
+                    <div class="property-image">
+                        <img src="assets/images/parcela.png" alt="Proyecto Tres Pinos" loading="lazy">
+                        <div class="property-badge badge-real">Proyecto Real</div>
+                        <div class="property-category-tag">Loteo Exclusivo</div>
+                    </div>
+                    <div class="property-body">
+                        <div class="property-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Los Álamos, Provincia de Arauco
+                        </div>
+                        <h3 class="property-title">Proyecto Tres Pinos</h3>
+                        <p class="property-excerpt">9 sitios exclusivos de 500 m² aprox. Ubicación privilegiada con vista panorámica y alta plusvalía.</p>
+                        <div class="property-specs">
+                            <span class="spec">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <path d="M3 9h18"/>
+                                    <path d="M9 3v18"/>
+                                </svg>
+                                500 m² avg.
+                            </span>
+                            <span class="spec">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/>
+                                </svg>
+                                9 Sitios
+                            </span>
+                            <span class="spec">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 2v20M2 12h20"/>
+                                </svg>
+                                Tour 360°
+                            </span>
+                        </div>
+                        <div class="property-footer">
+                            <div class="property-price">
+                                <span class="price-label">Consultar</span>
+                                <span class="price-value">Precio Lanzamiento</span>
+                            </div>
+                            <button class="btn btn-sm btn-primary" id="btn-tres-pinos">Ver Detalles</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Property Card 1 (Original shifted) -->
+                <article class="property-card" data-category="terreno" data-animate="fade-up" data-delay="0">
+                    <div class="property-image">
+                        <img src="assets/images/terreno.png" alt="Terreno rural en Cañete" loading="lazy">
+                        <div class="property-badge">Destacado</div>
+                        <div class="property-category-tag">Terreno Rural</div>
+                    </div>
+                    <div class="property-body">
+                        <div class="property-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Cañete, Provincia de Arauco
+                        </div>
+                        <h3 class="property-title">Parcela 5.000 m² con Acceso a Ruta</h3>
+                        <p class="property-excerpt">Terreno plano con factibilidad de agua y electricidad. A 2 km de ruta pavimentada. Ideal para proyecto residencial o turístico.</p>
+                        <div class="property-specs">
+                            <span class="spec">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <path d="M3 9h18"/>
+                                    <path d="M9 3v18"/>
+                                </svg>
+                                5.000 m²
+                            </span>
+                            <span class="spec">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/>
+                                </svg>
+                                Rural
+                            </span>
+                            <span class="spec">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                    <polyline points="22 4 12 14.01 9 11.01"/>
+                                </svg>
+                                Factibilidad
+                            </span>
+                        </div>
+                        <div class="property-footer">
+                            <div class="property-price">
+                                <span class="price-label">Desde</span>
+                                <span class="price-value">UF 1.200</span>
+                            </div>
+                            <a href="#contact" class="btn btn-sm">Consultar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Property Card 2 -->
+                <article class="property-card" data-category="casa" data-animate="fade-up" data-delay="100">
+                    <div class="property-image">
+                        <img src="assets/images/casa.png" alt="Casa moderna en Lebu" loading="lazy">
+                        <div class="property-badge badge-new">Nuevo</div>
+                        <div class="property-category-tag">Casa</div>
+                    </div>
+                    <div class="property-body">
+                        <div class="property-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Lebu, Provincia de Arauco
+                        </div>
+                        <h3 class="property-title">Casa Moderna 220 m² con Vista Panorámica</h3>
+                        <p class="property-excerpt">Construcción reciente, 4 dormitorios, 3 baños. Cocina isla, terraza techada con vista al valle. Potencial de Airbnb turístico.</p>
+                        <div class="property-specs">
+                            <span class="spec">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <path d="M3 9h18"/>
+                                    <path d="M9 3v18"/>
+                                </svg>
+                                220 m²
+                            </span>
+                            <span class="spec">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                                </svg>
+                                4 Dorm.
+                            </span>
+                            <span class="spec">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                    <polyline points="22 4 12 14.01 9 11.01"/>
+                                </svg>
+                                3 Baños
+                            </span>
+                        </div>
+                        <div class="property-footer">
+                            <div class="property-price">
+                                <span class="price-label">Precio</span>
+                                <span class="price-value">UF 4.800</span>
+                            </div>
+                            <a href="#contact" class="btn btn-sm">Consultar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Property Card 3 -->
+                <article class="property-card" data-category="industrial" data-animate="fade-up" data-delay="200">
+                    <div class="property-image">
+                        <img src="assets/images/galpon.png" alt="Galpón industrial en Horcones" loading="lazy">
+                        <div class="property-badge badge-hot">Oportunidad</div>
+                        <div class="property-category-tag">Industrial</div>
+                    </div>
+                    <div class="property-body">
+                        <div class="property-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Horcones, Comuna de Arauco
+                        </div>
+                        <h3 class="property-title">Galpón Industrial 1.200 m² + Patio</h3>
+                        <p class="property-excerpt">Estructura metálica en buen estado, altura libre 8m, acceso para camiones. Patio de maniobras de 3.000 m². Ideal centro logístico.</p>
+                        <div class="property-specs">
+                            <span class="spec">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <path d="M3 9h18"/>
+                                    <path d="M9 3v18"/>
+                                </svg>
+                                1.200 m²
+                            </span>
+                            <span class="spec">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/>
+                                </svg>
+                                H. Libre 8m
+                            </span>
+                            <span class="spec">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                    <polyline points="22 4 12 14.01 9 11.01"/>
+                                </svg>
+                                Ruta Directa
+                            </span>
+                        </div>
+                        <div class="property-footer">
+                            <div class="property-price">
+                                <span class="price-label">Consultar</span>
+                                <span class="price-value">Precio a convenir</span>
+                            </div>
+                            <a href="#contact" class="btn btn-sm">Consultar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Property Card 4 -->
+                <article class="property-card" data-category="comercial" data-animate="fade-up" data-delay="300">
+                    <div class="property-image">
+                        <img src="assets/images/comercial.png" alt="Local comercial en Lebu" loading="lazy">
+                        <div class="property-category-tag">Comercial</div>
+                    </div>
+                    <div class="property-body">
+                        <div class="property-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Centro de Lebu
+                        </div>
+                        <h3 class="property-title">Local Comercial 180 m² en Zona Céntrica</h3>
+                        <p class="property-excerpt">Dos niveles, vitrina a calle principal. Alto flujo peatonal. Ideal retail, servicio profesional o emprendimiento gastronómico.</p>
+                        <div class="property-specs">
+                            <span class="spec">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <path d="M3 9h18"/>
+                                    <path d="M9 3v18"/>
+                                </svg>
+                                180 m²
+                            </span>
+                            <span class="spec">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                                </svg>
+                                2 Niveles
+                            </span>
+                            <span class="spec">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                    <polyline points="22 4 12 14.01 9 11.01"/>
+                                </svg>
+                                Vitrina
+                            </span>
+                        </div>
+                        <div class="property-footer">
+                            <div class="property-price">
+                                <span class="price-label">Arriendo</span>
+                                <span class="price-value">UF 18/mes</span>
+                            </div>
+                            <a href="#contact" class="btn btn-sm">Consultar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Property Card 5 -->
+                <article class="property-card" data-category="terreno" data-animate="fade-up" data-delay="100">
+                    <div class="property-image">
+                        <img src="assets/images/parcela.png" alt="Loteo en Los Álamos" loading="lazy">
+                        <div class="property-badge badge-hot">Gran Proyección</div>
+                        <div class="property-category-tag">Loteo</div>
+                    </div>
+                    <div class="property-body">
+                        <div class="property-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Los Álamos, Provincia de Arauco
+                        </div>
+                        <h3 class="property-title">Proyecto Loteo 12 Parcelas de Agrado</h3>
+                        <p class="property-excerpt">Parcelas desde 1.000 m² con caminos interiores, agua de pozo profundo y red eléctrica. Bosque nativo en los bordes. Inversión segura.</p>
+                        <div class="property-specs">
+                            <span class="spec">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <path d="M3 9h18"/>
+                                    <path d="M9 3v18"/>
+                                </svg>
+                                1.000+ m²
+                            </span>
+                            <span class="spec">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/>
+                                </svg>
+                                12 Lotes
+                            </span>
+                            <span class="spec">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                    <polyline points="22 4 12 14.01 9 11.01"/>
+                                </svg>
+                                Servicios
+                            </span>
+                        </div>
+                        <div class="property-footer">
+                            <div class="property-price">
+                                <span class="price-label">Desde</span>
+                                <span class="price-value">UF 450/lote</span>
+                            </div>
+                            <a href="#contact" class="btn btn-sm">Consultar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Property Card 6 -->
+                <article class="property-card" data-category="industrial" data-animate="fade-up" data-delay="200">
+                    <div class="property-image">
+                        <img src="assets/images/galpon.png" alt="Bodega en Curanilahue" loading="lazy">
+                        <div class="property-category-tag">Bodega</div>
+                    </div>
+                    <div class="property-body">
+                        <div class="property-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Curanilahue, Provincia de Arauco
+                        </div>
+                        <h3 class="property-title">Terreno Industrial 8.000 m² con Bodega</h3>
+                        <p class="property-excerpt">Terreno cerrado con portón vehicular. Bodega de 600 m² con servicios. Conectado a ruta principal. Potencial centro de distribución forestal.</p>
+                        <div class="property-specs">
+                            <span class="spec">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <path d="M3 9h18"/>
+                                    <path d="M9 3v18"/>
+                                </svg>
+                                8.000 m²
+                            </span>
+                            <span class="spec">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/>
+                                </svg>
+                                Cerrado
+                            </span>
+                            <span class="spec">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                    <polyline points="22 4 12 14.01 9 11.01"/>
+                                </svg>
+                                Servicios
+                            </span>
+                        </div>
+                        <div class="property-footer">
+                            <div class="property-price">
+                                <span class="price-label">Venta</span>
+                                <span class="price-value">UF 3.200</span>
+                            </div>
+                            <a href="#contact" class="btn btn-sm">Consultar</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ==================== MODALS ==================== -->
+    <div class="modal" id="modal-project-tres-pinos">
+        <div class="modal-overlay" id="overlay-tres-pinos"></div>
+        <div class="modal-content modal-content-wide">
+            <button class="modal-close" id="close-tres-pinos">&times;</button>
+            <div class="modal-body">
+                <div class="project-detail-layout">
+                    <!-- Left: 360 Viewer + Info -->
+                    <div class="project-main">
+                        <span class="section-tag">Tour Virtual Drone</span>
+                        <h2 class="section-title">Proyecto <span class="text-accent">Tres Pinos</span></h2>
+                        
+                        <div class="viewer-360-container" id="kuula-container">
+                            <!-- PLACEHOLDER FOR KUULA -->
+                            <div class="viewer-360-placeholder">
+                                <div class="placeholder-icon">🌐</div>
+                                <p>Cargando Tour 360° de Kuula...</p>
+                                <small>Requiere conexión a internet</small>
+                            </div>
+                            <iframe 
+                                id="kuula-iframe"
+                                width="100%" 
+                                height="640" 
+                                frameborder="0" 
+                                allowfullscreen 
+                                allow="xr-spatial-tracking; gyroscope; accelerometer"
+                                data-src="https://kuula.co/share/LGgDG?fs=1&vr=1&zoom=1&autorotate=0.15">
+                            </iframe>
+                        </div>
+
+                        <div class="project-description">
+                            <h3>Descripción del Proyecto</h3>
+                            <p>
+                                Ubicado en una zona estratégica de Los Álamos, el <strong>Proyecto Tres Pinos</strong> ofrece una oportunidad única 
+                                de inversión. Con 9 lotes exclusivos de aproximadamente 500 metros cuadrados, este desarrollo combina la tranquilidad 
+                                del entorno natural con la conectividad necesaria para la vida moderna.
+                            </p>
+                            <p>
+                                Cada sitio ha sido diseñado para maximizar las vistas y el aprovechamiento del terreno, ideal para 
+                                proyectos residenciales de vanguardia o cabañas de alta gama.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Specs + Table -->
+                    <div class="project-sidebar">
+                        <div class="project-specs-card">
+                            <h4>Detalles Técnicos</h4>
+                            <div class="spec-item">
+                                <span>Total Sitios:</span>
+                                <strong>9 Unidades</strong>
+                            </div>
+                            <div class="spec-item">
+                                <span>Superficie:</span>
+                                <strong>~500 m²</strong>
+                            </div>
+                            <div class="spec-item">
+                                <span>Factibilidad:</span>
+                                <strong>Electricidad y Agua</strong>
+                            </div>
+                            <div class="spec-item">
+                                <span>Estado:</span>
+                                <strong>Preventa</strong>
+                            </div>
+                        </div>
+
+                        <div class="project-inventory">
+                            <h4>Disponibilidad</h4>
+                            <table class="inventory-table">
+                               <thead>
+                                   <tr>
+                                       <th>Sitio</th>
+                                       <th>Metros</th>
+                                       <th>Estado</th>
+                                   </tr>
+                               </thead>
+                               <tbody id="tres-pinos-inventory-body">
+                                   <!-- Dynamically populated from tres-pinos-data.js -->
+                                   <tr><td colspan="3" style="text-align:center;">Cargando disponibilidad...</td></tr>
+                               </tbody>
+                            </table>
+                        </div>
+
+                        <div class="project-location-map">
+                            <h4>Ubicación</h4>
+                            <div class="map-container">
+                                <iframe 
+                                    id="tres-pinos-map"
+                                    src="" 
+                                    width="100%" 
+                                    height="200" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                            <a id="tres-pinos-map-link" href="#" target="_blank" class="btn-link">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                                </svg>
+                                Ver en Google Maps
+                            </a>
+                        </div>
+
+                        <a href="https://wa.me/56978589090?text=Hola%20Nahuelbuta%2C%20me%20interesa%20el%20Proyecto%20Tres%20Pinos" class="btn btn-primary btn-full" target="_blank" rel="noopener">
+                            Preguntar por este Proyecto
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-about">
+        <div class="modal-overlay" id="overlay-about"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="close-about">&times;</button>
+            <div class="modal-body">
+                <!-- ABOUT SECTION (MOVED) -->
+                <section class="about-modal">
+                    <div class="container">
+                        <div class="about-grid">
+                            <div class="about-left" data-animate="fade-right">
+                                <span class="section-tag">¿Por qué elegirnos?</span>
+                                <h2 class="section-title">No somos una<br>corredora <span class="text-accent">tradicional</span></h2>
+                                <p class="about-text">
+                                    Somos un equipo técnico liderado por la <strong>Arquitectura</strong> y la 
+                                    <strong>Gestión Inmobiliaria estratégica</strong> para revelar el verdadero potencial de cada propiedad. 
+                                    Mientras otros muestran fotos, nosotros entregamos <em>análisis de inversión, diseño de futuro 
+                                    y tecnología aérea</em>.
+                                </p>
+                                <p class="about-text">
+                                    Operamos en la <strong>Provincia de Arauco</strong>, una zona de Chile con inversión pública 
+                                    superior a <span class="highlight">$83 mil millones</span> en infraestructura para 2025-2026. 
+                                    Conocemos cada rincón, cada oportunidad.
+                                </p>
+                                <div class="about-features">
+                                    <div class="feature">
+                                        <div class="feature-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                                <path d="M9 12l2 2 4-4"/>
+                                                <circle cx="12" cy="12" r="10"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <strong>Análisis Técnico</strong>
+                                            <span>Cada propiedad incluye estudio de rentabilidad y cabida</span>
+                                        </div>
+                                    </div>
+                                    <div class="feature">
+                                        <div class="feature-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                                <path d="M9 12l2 2 4-4"/>
+                                                <circle cx="12" cy="12" r="10"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <strong>Visión Arquitectónica</strong>
+                                            <span>Propuestas de desarrollo incluidas sin costo adicional</span>
+                                        </div>
+                                    </div>
+                                    <div class="feature">
+                                        <div class="feature-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                                <path d="M9 12l2 2 4-4"/>
+                                                <circle cx="12" cy="12" r="10"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <strong>Cobertura Aérea</strong>
+                                            <span>Video drone profesional para cada propiedad listada</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="about-right" data-animate="fade-left">
+                                <div class="about-visual">
+                                    <div class="visual-card visual-card-1">
+                                        <img src="assets/images/parcela.png" alt="Vista aérea de parcelas">
+                                    </div>
+                                    <div class="visual-card visual-card-2">
+                                        <img src="assets/images/casa.png" alt="Casa moderna en el sur">
+                                    </div>
+                                    <div class="visual-accent"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-services">
+        <div class="modal-overlay" id="overlay-services"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="close-services">&times;</button>
+            <div class="modal-body">
+                <!-- SERVICES SECTION (MOVED) -->
+                <section class="services-modal">
+                    <div class="container">
+                        <div class="section-header" data-animate="fade-up">
+                            <span class="section-tag">Nuestros Servicios</span>
+                            <h2 class="section-title">Soluciones Inmobiliarias<br><span class="text-accent">con Valor Estratégico</span></h2>
+                            <p class="section-subtitle">Seis servicios profesionales para que su propiedad alcance su máximo potencial. Sin letra chica.</p>
+                        </div>
+                        <div class="services-grid">
+
+                            <!-- Service 1: Gestión Integral (FEATURED) -->
+                            <div class="service-card service-card-featured">
+                                <div class="service-featured-badge">Más Solicitado</div>
+                                <div class="service-number">01</div>
+                                <div class="service-icon">
+                                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M24 4L6 16v24h14V30h8v10h14V16L24 4z"/>
+                                        <path d="M14 22h20"/>
+                                        <path d="M14 28h14"/>
+                                        <circle cx="24" cy="16" r="3"/>
+                                    </svg>
+                                </div>
+                                <h3 class="service-title">Gestión Integral de Venta</h3>
+                                <p class="service-desc">Nos entregan el terreno o propiedad y <strong>nosotros hacemos todo</strong>: desde los planos hasta cerrar la venta. Cero preocupaciones.</p>
+                                <ul class="service-list">
+                                    <li>Visita técnica con arquitecto</li>
+                                    <li>Plano de subdivisión o cabida</li>
+                                    <li>Fotos profesionales + video drone</li>
+                                    <li>Publicación en portales y redes</li>
+                                    <li>Gestión comercial y negociación</li>
+                                    <li>Coordinación legal (notaría)</li>
+                                </ul>
+                                <div class="service-pricing">
+                                    <span class="service-price-label">Desde</span>
+                                    <span class="service-price-value">3%</span>
+                                    <span class="service-price-note">comisión sobre venta</span>
+                                </div>
+                            </div>
+
+                            <!-- Service 2: Planimetría -->
+                            <div class="service-card">
+                                <div class="service-number">02</div>
+                                <div class="service-icon">
+                                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <rect x="6" y="6" width="36" height="36" rx="2"/>
+                                        <path d="M6 18h36"/>
+                                        <path d="M18 6v36"/>
+                                        <path d="M30 18v24"/>
+                                        <path d="M6 30h12"/>
+                                        <circle cx="12" cy="12" r="2"/>
+                                    </svg>
+                                </div>
+                                <h3 class="service-title">Planimetría y Diseño Visual</h3>
+                                <p class="service-desc">Planos atractivos y profesionales que <strong>venden por sí solos</strong>. No los típicos planos feos — diseño visual de alto nivel para su terreno o proyecto.</p>
+                                <ul class="service-list">
+                                    <li>Plano de subdivisión estilizado</li>
+                                    <li>Lámina comercial lista para compartir</li>
+                                    <li>Estudio de cabida básico</li>
+                                    <li>Render 3D del potencial constructivo</li>
+                                </ul>
+
+                            </div>
+
+                            <!-- Service 3: Producción Audiovisual -->
+                            <div class="service-card">
+                                <div class="service-number">03</div>
+                                <div class="service-icon">
+                                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <circle cx="24" cy="20" r="8"/>
+                                        <path d="M24 4v4"/>
+                                        <path d="M24 32v4"/>
+                                        <path d="M10 20H6"/>
+                                        <path d="M42 20h-4"/>
+                                        <path d="M14 10l-2-2"/>
+                                        <path d="M34 10l2-2"/>
+                                        <rect x="18" y="38" width="12" height="6" rx="1"/>
+                                    </svg>
+                                </div>
+                                <h3 class="service-title">Producción Audiovisual</h3>
+                                <p class="service-desc">Fotos profesionales, <strong>video drone 4K</strong> y edición cinematográfica con efectos modernos. Material que impacta en redes y portales.</p>
+                                <ul class="service-list">
+                                    <li>Fotografía profesional (15-20 fotos)</li>
+                                    <li>Video aéreo drone 4K editado</li>
+                                    <li>Video con música, textos y efectos</li>
+                                    <li>Optimizado para redes sociales</li>
+                                </ul>
+
+                            </div>
+
+                            <!-- Service 4: Consultoría -->
+                            <div class="service-card">
+                                <div class="service-number">04</div>
+                                <div class="service-icon">
+                                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M8 40V20l16-14 16 14v20"/>
+                                        <path d="M4 44h40"/>
+                                        <path d="M20 40V28h8v12"/>
+                                        <path d="M36 8h-6v8"/>
+                                    </svg>
+                                </div>
+                                <h3 class="service-title">Consultoría de Inversión</h3>
+                                <p class="service-desc">¿Cuánto vale realmente su propiedad? ¿Dónde conviene invertir? <strong>Análisis financiero profesional</strong> con datos reales del mercado local.</p>
+                                <ul class="service-list">
+                                    <li>Tasación comercial con comparables</li>
+                                    <li>Análisis de rentabilidad y ROI</li>
+                                    <li>Estudio de plusvalía a 3-5 años</li>
+                                    <li>Asesoría personalizada</li>
+                                </ul>
+
+                            </div>
+
+                            <!-- Service 5: Dossier de Oro -->
+                            <div class="service-card service-card-gold">
+                                <div class="service-featured-badge service-badge-gold">Premium</div>
+                                <div class="service-number">05</div>
+                                <div class="service-icon">
+                                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <rect x="8" y="4" width="32" height="40" rx="2"/>
+                                        <path d="M16 12h16"/>
+                                        <path d="M16 18h16"/>
+                                        <path d="M16 24h10"/>
+                                        <path d="M16 32h16"/>
+                                        <path d="M16 38h8"/>
+                                        <circle cx="36" cy="36" r="8" fill="currentColor" stroke="none" opacity="0.15"/>
+                                        <path d="M33 36l2 2 4-4" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <h3 class="service-title">El Dossier de Oro</h3>
+                                <p class="service-desc">Nuestro producto insignia: un <strong>informe técnico-comercial de alto nivel</strong> que combina arquitectura, análisis financiero y producción audiovisual en un solo documento.</p>
+                                <ul class="service-list">
+                                    <li>Diagnóstico arquitectónico completo</li>
+                                    <li>Análisis financiero y proyección de ROI</li>
+                                    <li>Producción audiovisual (fotos + drone)</li>
+                                    <li>Estudio de conectividad y plusvalía</li>
+                                    <li>Diseño editorial premium</li>
+                                </ul>
+
+                            </div>
+
+                            <!-- Service 6: Subdivisión -->
+                            <div class="service-card">
+                                <div class="service-number">06</div>
+                                <div class="service-icon">
+                                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <rect x="4" y="4" width="18" height="18" rx="2"/>
+                                        <rect x="26" y="4" width="18" height="18" rx="2"/>
+                                        <rect x="4" y="26" width="18" height="18" rx="2"/>
+                                        <rect x="26" y="26" width="18" height="18" rx="2"/>
+                                        <path d="M13 13v0" stroke-width="3" stroke-linecap="round"/>
+                                        <path d="M35 13v0" stroke-width="3" stroke-linecap="round"/>
+                                        <path d="M13 35v0" stroke-width="3" stroke-linecap="round"/>
+                                        <path d="M35 35v0" stroke-width="3" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                                <h3 class="service-title">Subdivisión y Loteo</h3>
+                                <p class="service-desc">¿Tiene un terreno grande? Lo transformamos en <strong>un proyecto de lotes vendibles</strong>: desde la factibilidad hasta el plano aprobado y láminas de venta por lote.</p>
+                                <ul class="service-list">
+                                    <li>Estudio de factibilidad y normativa</li>
+                                    <li>Diseño del loteo con caminos y áreas</li>
+                                    <li>Tramitación ante DOM y SAG</li>
+                                    <li>Material de venta individual por lote</li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                        <div class="services-cta">
+                            <p class="services-cta-text">¿No está seguro de qué servicio necesita? Conversemos sin compromiso.</p>
+                            <a href="https://wa.me/56978589090?text=Hola%20Nahuelbuta%2C%20quiero%20consultar%20sobre%20sus%20servicios" class="btn btn-primary" target="_blank" rel="noopener">
+                                Consultar por WhatsApp
+                            </a>
+                        </div>
+
+                        <!-- Dossier CTA Section included here -->
+                        <div class="modal-dossier-wrap">
+                            <div class="cta-dossier" id="dossier-inner">
+                                <div class="cta-content">
+                                    <span class="section-tag tag-light">Exclusivo</span>
+                                    <h2 class="cta-title">El Dossier<br><span class="text-gold">de Oro</span></h2>
+                                    <p class="cta-text">
+                                        Cada propiedad que gestionamos incluye un <strong>Informe Técnico-Comercial Premium</strong>: 
+                                        análisis de rentabilidad, propuesta arquitectónica de desarrollo y video aéreo profesional. 
+                                    </p>
+                                    <a href="#contact" class="btn btn-gold modal-dossier-btn">Solicitar un Dossier</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info" data-animate="fade-right">
+                    <span class="section-tag">Contacto</span>
+                    <h2 class="section-title">Conversemos sobre<br>su <span class="text-accent">próxima inversión</span></h2>
+                    <p class="contact-text">
+                        Ya sea que tenga una propiedad para vender o esté buscando su próxima inversión 
+                        en la Provincia de Arauco, estamos aquí para guiarlo con datos, diseño y tecnología.
+                    </p>
+                    <div class="contact-methods">
+                        <a href="https://wa.me/56978589090?text=Hola%20Nahuelbuta%2C%20me%20interesa%20saber%20más%20sobre%20sus%20propiedades" class="contact-method" target="_blank" rel="noopener" id="whatsapp-link">
+                            <div class="method-icon whatsapp-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <strong>WhatsApp</strong>
+                                <span>Respuesta inmediata</span>
+                            </div>
+                        </a>
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <strong>contacto@nahuelbuta.cl</strong>
+                                <span>Email corporativo</span>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <strong>Provincia de Arauco</strong>
+                                <span>Lebu — Cañete — Arauco</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper" data-animate="fade-left">
+                    <form class="contact-form" id="contact-form">
+                        <h3 class="form-title">Enviar Consulta</h3>
+                        <div class="form-group">
+                            <input type="text" id="contact-name" name="name" placeholder=" " required>
+                            <label for="contact-name">Nombre completo</label>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="email" id="contact-email" name="email" placeholder=" " required>
+                                <label for="contact-email">Email</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" id="contact-phone" name="phone" placeholder=" ">
+                                <label for="contact-phone">Teléfono</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <select id="contact-interest" name="interest" required>
+                                <option value="" disabled selected>¿Qué busca?</option>
+                                <option value="comprar-terreno">Comprar Terreno</option>
+                                <option value="comprar-casa">Comprar Casa / Negocio</option>
+                                <option value="industrial">Propiedad Industrial</option>
+                                <option value="vender">Quiero Vender mi Propiedad</option>
+                                <option value="consultoria">Consultoría de Inversión</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="contact-message" name="message" rows="4" placeholder=" " required></textarea>
+                            <label for="contact-message">Mensaje</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full" id="submit-btn">
+                            Enviar Consulta
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 2L11 13"/>
+                                <path d="M22 2l-7 20-4-9-9-4 20-7z"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="logo-text">
+                            <span class="logo-name"><span class="char-n">N</span><span class="char-a-roof">a</span>huelbuta</span>
+                            <span class="logo-sub">Gestión Inmobiliaria</span>
+                        </div>
+                    </div>
+                    <p class="footer-tagline">Arquitectura, diseño técnico y tecnología al servicio de su inversión inmobiliaria en la Provincia de Arauco.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegación</h4>
+                    <a href="#hero">Inicio</a>
+                    <a href="#about">Nosotros</a>
+                    <a href="#services">Servicios</a>
+                    <a href="#properties">Propiedades</a>
+                    <a href="#contact">Contacto</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Servicios</h4>
+                    <a href="#services">Gestión Integral</a>
+                    <a href="#services">Planimetría y Diseño</a>
+                    <a href="#services">Producción Audiovisual</a>
+                    <a href="#services">Consultoría</a>
+                    <a href="#services">Dossier de Oro</a>
+                    <a href="#services">Subdivisión y Loteo</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Nahuelbuta Gestión Inmobiliaria. Todos los derechos reservados.</p>
+                <p class="footer-founders">Ricardo Mari & Javier Herrera — Provincia de Arauco, Chile</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
