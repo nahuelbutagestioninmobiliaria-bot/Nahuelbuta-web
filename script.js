@@ -182,9 +182,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 iframe.src = iframe.getAttribute('data-src');
             }
 
-            // Populate Tres Pinos Table if it's the right modal
+            // Populate Tres Pinos Data if it's the right modal
             if (id === 'project-tres-pinos' && window.TRES_PINOS_DATA) {
-                populateTresPinosTable();
+                populateTresPinosData();
+                initializeMediaSuite();
             }
 
             m.style.display = 'flex';
@@ -320,25 +321,50 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
     }
     // ---- Tres Pinos Dynamic Population ----
-    function populateTresPinosTable() {
-        const tableBody = document.getElementById('tres-pinos-inventory-body');
-        if (!tableBody || !window.TRES_PINOS_DATA) return;
-
-        const { lots, mapUrl, mapLink } = window.TRES_PINOS_DATA;
+    function initializeMediaSuite() {
+        const mediaTabs = document.querySelectorAll('.media-tab');
+        const mediaPanels = document.querySelectorAll('.media-panel');
         
-        tableBody.innerHTML = lots.map(lot => `
-            <tr>
-                <td>${lot.id}</td>
-                <td>${lot.surface} m²</td>
-                <td class="status-${lot.status.toLowerCase()}">${lot.status}</td>
-            </tr>
-        `).join('');
+        mediaTabs.forEach(tab => {
+            tab.onclick = () => {
+                const target = tab.getAttribute('data-target');
+                mediaTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                mediaPanels.forEach(p => p.classList.remove('active'));
+                document.getElementById(`panel-${target}`).classList.add('active');
+            };
+        });
+    }
 
-        // Update Map
+    function populateTresPinosData() {
+        const data = window.TRES_PINOS_DATA;
+        if (!data) return;
+
+        // 1. Table
+        const tableBody = document.getElementById('tres-pinos-inventory-body');
+        if (tableBody) {
+            tableBody.innerHTML = data.lots.map(lot => `
+                <tr>
+                    <td>${lot.id}</td>
+                    <td>${lot.surface} m²</td>
+                    <td class="status-${lot.status.toLowerCase()}">${lot.status}</td>
+                </tr>
+            `).join('');
+        }
+
+        // 2. Gallery
+        const galleryGrid = document.getElementById('tres-pinos-gallery');
+        if (galleryGrid && data.gallery) {
+            galleryGrid.innerHTML = data.gallery.map(img => `
+                <img src="${img.url}" alt="${img.alt}" class="gallery-photo" loading="lazy">
+            `).join('');
+        }
+
+        // 3. Map
         const mapIframe = document.getElementById('tres-pinos-map');
         const mapBtnLink = document.getElementById('tres-pinos-map-link');
-        if (mapIframe && mapUrl) mapIframe.src = mapUrl;
-        if (mapBtnLink && mapLink) mapBtnLink.href = mapLink;
+        if (mapIframe && data.mapUrl) mapIframe.src = data.mapUrl;
+        if (mapBtnLink && data.mapLink) mapBtnLink.href = data.mapLink;
     }
 
 });

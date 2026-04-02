@@ -477,35 +477,49 @@
                         <span class="section-tag">Tour Virtual Drone</span>
                         <h2 class="section-title">Proyecto <span class="text-accent">Tres Pinos</span></h2>
                         
-                        <div class="viewer-360-container" id="kuula-container">
-                            <!-- PLACEHOLDER FOR KUULA -->
-                            <div class="viewer-360-placeholder">
-                                <div class="placeholder-icon">🌐</div>
-                                <p>Cargando Tour 360° de Kuula...</p>
-                                <small>Requiere conexión a internet</small>
+                        <div class="media-suite">
+                            <div class="media-nav">
+                                <button class="media-tab active" data-target="360">Recorrido 360°</button>
+                                <button class="media-tab" data-target="photos">Galería de Fotos</button>
                             </div>
-                            <iframe 
-                                id="kuula-iframe"
-                                width="100%" 
-                                height="640" 
-                                frameborder="0" 
-                                allowfullscreen 
-                                allow="xr-spatial-tracking; gyroscope; accelerometer"
-                                data-src="https://kuula.co/share/LGgDG?fs=1&vr=1&zoom=1&autorotate=0.15">
-                            </iframe>
+                            <div class="media-shell">
+                                <!-- 360 Panel -->
+                                <div class="media-panel active" id="panel-360">
+                                    <iframe 
+                                        id="kuula-iframe"
+                                        width="100%" 
+                                        height="100%" 
+                                        frameborder="0" 
+                                        allowfullscreen 
+                                        allow="xr-spatial-tracking; gyroscope; accelerometer"
+                                        data-src="https://kuula.co/share/LGgDG?fs=1&vr=1&zoom=1&autorotate=0.15">
+                                    </iframe>
+                                </div>
+                                <!-- Photos Panel -->
+                                <div class="media-panel" id="panel-photos">
+                                    <div class="photo-gallery-grid" id="tres-pinos-gallery">
+                                        <!-- Dynamically populated -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="project-description">
-                            <h3>Descripción del Proyecto</h3>
+                            <h3>Sobre el Proyecto</h3>
                             <p>
-                                Ubicado en una zona estratégica de Los Álamos, el <strong>Proyecto Tres Pinos</strong> ofrece una oportunidad única 
-                                de inversión. Con 9 lotes exclusivos de aproximadamente 500 metros cuadrados, este desarrollo combina la tranquilidad 
-                                del entorno natural con la conectividad necesaria para la vida moderna.
+                                Estratégicamente ubicado en Los Álamos, el <strong>Proyecto Tres Pinos</strong> representa la vanguardia 
+                                del desarrollo inmobiliario en la región. Un refugio de modernidad y naturaleza diseñado para 
+                                quienes buscan exclusividad y sostenibilidad.
                             </p>
-                            <p>
-                                Cada sitio ha sido diseñado para maximizar las vistas y el aprovechamiento del terreno, ideal para 
-                                proyectos residenciales de vanguardia o cabañas de alta gama.
-                            </p>
+                        </div>
+
+                        <!-- Master Plan Section -->
+                        <div class="master-plan-box" data-animate="fade-up">
+                            <h4>Master Plan del Loteo</h4>
+                            <p class="section-subtitle">Distribución estratégica de los 9 sitios exclusivos y áreas comunes.</p>
+                            <div class="plan-img-wrap">
+                                <img src="assets/images/tres_pinos_plan.jpg" alt="Plano de Loteo Tres Pinos" loading="lazy">
+                            </div>
                         </div>
                     </div>
 

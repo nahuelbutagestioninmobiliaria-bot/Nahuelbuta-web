@@ -8,10 +8,14 @@
     /* Colors — Dark forest luxury palette */
     --color-bg-primary: #080e09;
     --color-bg-secondary: #0d150f;
-    --color-bg-card: #111a13;
-    --color-bg-card-hover: #162018;
+    --color-bg-card: rgba(17, 26, 19, 0.4);
+    --color-bg-card-hover: rgba(22, 32, 24, 0.7);
     --color-bg-elevated: #1a241c;
-    --color-bg-glass: rgba(17, 26, 19, 0.75);
+    --color-bg-glass: rgba(17, 26, 19, 0.7);
+    --glass-blur: 16px;
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --shadow-premium: 0 20px 50px rgba(0, 0, 0, 0.5);
+    --transition-premium: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 
     --color-accent: #8fbc6a;
     --color-accent-bright: #a4d47e;
@@ -1949,4 +1953,124 @@ a {
         padding: 8px 14px;
         font-size: 0.78rem;
     }
+}
+
+/* ============================================
+   MEDIA SUITE & MASTER PLAN
+   ============================================ */
+.media-suite {
+    margin-bottom: 40px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-soft);
+}
+
+.media-nav {
+    display: flex;
+    background: rgba(0,0,0,0.3);
+    padding: 8px;
+    gap: 8px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.media-tab {
+    padding: 10px 24px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--color-text-muted);
+    transition: var(--transition-premium);
+    background: transparent;
+    border: 1px solid transparent;
+}
+
+.media-tab:hover {
+    color: var(--color-text-primary);
+}
+
+.media-tab.active {
+    background: var(--color-accent);
+    color: var(--color-text-inverse);
+    box-shadow: 0 4px 15px rgba(143, 188, 106, 0.3);
+}
+
+.media-shell {
+    position: relative;
+    height: 640px;
+    background: #000;
+}
+
+.media-panel {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+.media-panel.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Photo Gallery Grid */
+.photo-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 8px;
+    height: 100%;
+}
+
+.gallery-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.6s var(--ease-out);
+}
+
+.gallery-photo:hover {
+    transform: scale(1.05);
+    z-index: 2;
+}
+
+.gallery-photo:first-child {
+    grid-row: span 2;
+}
+
+/* Master Plan visual */
+.master-plan-box {
+    margin-top: 48px;
+    padding: 40px;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    backdrop-filter: blur(var(--glass-blur));
+}
+
+.master-plan-box h4 {
+    margin-bottom: 24px;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+}
+
+.plan-img-wrap {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-premium);
+    border: 1px solid var(--color-border-hover);
+}
+
+.plan-img-wrap img {
+    width: 100%;
+    display: block;
+}
+
+@media (max-width: 992px) {
+    .media-shell { height: 450px; }
+    .photo-gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
 }
