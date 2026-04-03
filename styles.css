@@ -359,7 +359,7 @@ a {
     font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    color: var(--color-text-muted);
+    color: var(--color-text-primary); /* Changed to white for better visibility */
     font-weight: 500;
     margin-top: 1px;
 }
