@@ -530,6 +530,137 @@ document.addEventListener('DOMContentLoaded', () => {
         startAutoplay();
     }
 
+    // ---- Featured Properties Carousel Logic ----
+    const fcTrack = document.getElementById('fc-track');
+    const fcPrev = document.getElementById('fc-prev');
+    const fcNext = document.getElementById('fc-next');
+    const fcDotsContainer = document.getElementById('fc-dots');
+    const fcCards = document.querySelectorAll('.fc-card');
+    
+    if (fcTrack && fcCards.length > 0) {
+        let fcIndex = 0;
+        let isDragging = false;
+        let startX, scrollLeft;
+        let autoplayActive = true;
+        
+        // Setup Dots
+        fcCards.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.classList.add('fc-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                fcIndex = i;
+                updateFC();
+                resetFCAutoplay();
+            });
+            fcDotsContainer.appendChild(dot);
+        });
+        
+        const fcDots = document.querySelectorAll('.fc-dot');
+        
+        function updateFC() {
+            const cardWidth = fcCards[0].offsetWidth + 24; // width + gap
+            const containerWidth = fcTrack.parentElement.offsetWidth;
+            const maxScroll = fcTrack.scrollWidth - containerWidth;
+            
+            // Calculate offset
+            let offset = fcIndex * cardWidth;
+            
+            // Ensure we don't scroll past the end
+            if (offset > maxScroll) {
+                offset = maxScroll;
+            }
+            
+            fcTrack.style.transform = `translateX(-${offset}px)`;
+            
+            // Update dots active state
+            fcDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === fcIndex);
+            });
+        }
+        
+        fcNext.addEventListener('click', () => {
+            fcIndex++;
+            if (fcIndex >= fcCards.length) fcIndex = 0;
+            updateFC();
+            resetFCAutoplay();
+        });
+        
+        fcPrev.addEventListener('click', () => {
+            fcIndex--;
+            if (fcIndex < 0) fcIndex = fcCards.length - 1;
+            updateFC();
+            resetFCAutoplay();
+        });
+        
+        // Autoplay
+        let fcAutoplay = setInterval(() => {
+            if (autoplayActive) {
+                fcIndex++;
+                if (fcIndex >= fcCards.length) fcIndex = 0;
+                updateFC();
+            }
+        }, 5000);
+        
+        function resetFCAutoplay() {
+            clearInterval(fcAutoplay);
+            fcAutoplay = setInterval(() => {
+                if (autoplayActive) {
+                    fcIndex++;
+                    if (fcIndex >= fcCards.length) fcIndex = 0;
+                    updateFC();
+                }
+            }, 5000);
+        }
+        
+        // Pause on hover
+        fcTrack.parentElement.addEventListener('mouseenter', () => autoplayActive = false);
+        fcTrack.parentElement.addEventListener('mouseleave', () => autoplayActive = true);
+        
+        // Drag / Swipe support
+        const viewport = fcTrack.parentElement;
+        
+        viewport.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.pageX - fcTrack.offsetLeft;
+            fcTrack.style.transition = 'none';
+        });
+        
+        window.addEventListener('mouseup', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            fcTrack.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+            
+            // Snap to nearest card
+            const cardWidth = fcCards[0].offsetWidth + 24;
+            const currentOffset = Math.abs(parseInt(fcTrack.style.transform.replace('translateX(-', '').replace('px)', '')) || 0);
+            fcIndex = Math.round(currentOffset / cardWidth);
+            updateFC();
+        });
+        
+        viewport.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - viewport.offsetLeft;
+            const walk = (x - startX) * 2;
+            // This is complex for transform based, skipping detailed drag for now but snap works
+        });
+
+        // Modal triggers for fc-cards
+        fcCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const modalId = card.getAttribute('data-modal');
+                if (modalId) {
+                    openModal(modalId);
+                }
+            });
+        });
+
+        // Initial update
+        window.addEventListener('resize', updateFC);
+        updateFC();
+    }
+
 });
 
 // Add spin animation for loading state
