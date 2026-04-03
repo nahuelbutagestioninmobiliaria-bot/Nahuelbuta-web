@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="20" fill="#2d3748"/>
+  <path d="M50 20 L80 45 H70 V80 H30 V45 H20 Z" fill="#4fd1c5"/>
+  <text x="50%" y="68%" font-family="Arial, sans-serif" font-weight="bold" font-size="36" fill="#ffffff" text-anchor="middle">N</text>
+</svg>
