@@ -271,7 +271,9 @@ a {
     left: 0;
     right: 0;
     z-index: 1000;
-    padding: 20px 0;
+    padding: 24px 0;
+    /* Subtle dark strip for legibility on bright backgrounds */
+    background: linear-gradient(to bottom, rgba(8, 14, 9, 0.7) 0%, rgba(8, 14, 9, 0.4) 50%, rgba(8, 14, 9, 0) 100%);
     transition: all var(--duration-normal) var(--ease-out);
 }
 
@@ -373,7 +375,7 @@ a {
     padding: 8px 16px;
     font-size: 0.85rem;
     font-weight: 500;
-    color: var(--color-text-secondary);
+    color: var(--color-text-primary); /* Brighter for better contrast on the dark strip */
     transition: color var(--duration-fast);
     border-radius: 100px;
 }
@@ -451,7 +453,13 @@ a {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, rgba(8, 14, 9, 0.4) 0%, rgba(8, 14, 9, 0.7) 60%, rgba(8, 14, 9, 0.95) 100%);
+    /* Lighter overlay to let the beautiful lake landscape shine */
+    background: linear-gradient(
+        180deg, 
+        rgba(8, 14, 9, 0.25) 0%, 
+        rgba(8, 14, 9, 0.4) 50%, 
+        rgba(10, 15, 10, 0.8) 100%
+    );
 }
 
 .hero-content {
