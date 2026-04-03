@@ -11,9 +11,10 @@ const TRES_PINOS_DATA = {
     mapLink: "https://maps.app.goo.gl/4TJDJxCmQu44EcrS7",
     planImage: "assets/images/tres_pinos_plan.jpg",
     gallery: [
-        { url: "assets/images/tres_pinos_collage.jpg", alt: "Vista General de Lotes" },
-        { url: "assets/images/tres_pinos_ext_1.jpg", alt: "Vista Exterior Casa Lote 1" },
-        { url: "assets/images/tres_pinos_ext_2.jpg", alt: "Vista Detallada Casa Lote 1" }
+        { url: "assets/images/tres_pinos_lotes_aereo.jpg", alt: "Vista aérea de los 9 lotes del proyecto" },
+        { url: "assets/images/tres_pinos_casas_aereo.jpg", alt: "Vista aérea con casas construidas" },
+        { url: "assets/images/tres_pinos_casa_lote1.jpg", alt: "Casa moderna Lote N°1" },
+        { url: "assets/images/tres_pinos_terreno_natural.jpg", alt: "Terreno natural con vegetación" }
     ],
     stats: {
         totalLots: 9,

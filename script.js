@@ -186,6 +186,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (id === 'project-tres-pinos' && window.TRES_PINOS_DATA) {
                 populateTresPinosData();
                 initializeMediaSuite();
+                // Initialize carousel after gallery is populated
+                setTimeout(() => initCarousel(), 100);
             }
 
             m.style.display = 'flex';
@@ -243,6 +245,23 @@ document.addEventListener('DOMContentLoaded', () => {
             item.overlay.addEventListener('click', () => closeModal(key));
         }
     });
+
+    // ---- Mobile: Tres Pinos image tap opens detail ----
+    const tresPinosImageLink = document.getElementById('tres-pinos-image-link');
+    if (tresPinosImageLink) {
+        tresPinosImageLink.addEventListener('click', (e) => {
+            // Only on mobile / tablet
+            if (window.innerWidth <= 1024) {
+                e.preventDefault();
+                e.stopPropagation();
+                openModal('project-tres-pinos');
+            }
+        });
+        tresPinosImageLink.style.cursor = window.innerWidth <= 1024 ? 'pointer' : '';
+        window.addEventListener('resize', () => {
+            tresPinosImageLink.style.cursor = window.innerWidth <= 1024 ? 'pointer' : '';
+        });
+    }
 
     // Close on ESC
     document.addEventListener('keydown', (e) => {
@@ -320,6 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, { passive: true });
     }
+
     // ---- Tres Pinos Dynamic Population ----
     function initializeMediaSuite() {
         const mediaTabs = document.querySelectorAll('.media-tab');
@@ -352,12 +372,22 @@ document.addEventListener('DOMContentLoaded', () => {
             `).join('');
         }
 
-        // 2. Gallery
-        const galleryGrid = document.getElementById('tres-pinos-gallery');
-        if (galleryGrid && data.gallery) {
-            galleryGrid.innerHTML = data.gallery.map(img => `
-                <img src="${img.url}" alt="${img.alt}" class="gallery-photo" loading="lazy">
+        // 2. Gallery — Carousel
+        const carouselTrack = document.getElementById('carousel-track');
+        const carouselDots = document.getElementById('carousel-dots');
+        if (carouselTrack && data.gallery) {
+            carouselTrack.innerHTML = data.gallery.map((img, i) => `
+                <div class="carousel-slide ${i === 0 ? 'active' : ''}">
+                    <img src="${img.url}" alt="${img.alt}" loading="lazy">
+                    <div class="carousel-caption">${img.alt}</div>
+                </div>
             `).join('');
+
+            if (carouselDots) {
+                carouselDots.innerHTML = data.gallery.map((_, i) => `
+                    <button class="carousel-dot ${i === 0 ? 'active' : ''}" data-index="${i}" aria-label="Ir a foto ${i + 1}"></button>
+                `).join('');
+            }
         }
 
         // 3. Map
@@ -365,6 +395,142 @@ document.addEventListener('DOMContentLoaded', () => {
         const mapBtnLink = document.getElementById('tres-pinos-map-link');
         if (mapIframe && data.mapUrl) mapIframe.src = data.mapUrl;
         if (mapBtnLink && data.mapLink) mapBtnLink.href = data.mapLink;
+    }
+
+    // ---- Premium Carousel System ----
+    let currentSlide = 0;
+    let totalSlides = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let autoplayInterval = null;
+
+    function initCarousel() {
+        const track = document.getElementById('carousel-track');
+        if (!track) return;
+
+        const slides = track.querySelectorAll('.carousel-slide');
+        totalSlides = slides.length;
+        currentSlide = 0;
+
+        if (totalSlides === 0) return;
+
+        // Navigation buttons
+        const prevBtn = document.getElementById('carousel-prev');
+        const nextBtn = document.getElementById('carousel-next');
+        
+        if (prevBtn) {
+            prevBtn.onclick = () => {
+                goToSlide(currentSlide - 1);
+                resetAutoplay();
+            };
+        }
+        if (nextBtn) {
+            nextBtn.onclick = () => {
+                goToSlide(currentSlide + 1);
+                resetAutoplay();
+            };
+        }
+
+        // Dots
+        const dots = document.querySelectorAll('.carousel-dot');
+        dots.forEach(dot => {
+            dot.onclick = () => {
+                goToSlide(parseInt(dot.getAttribute('data-index')));
+                resetAutoplay();
+            };
+        });
+
+        // Touch/Swipe support
+        const wrapper = document.getElementById('tres-pinos-gallery');
+        if (wrapper) {
+            wrapper.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            wrapper.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+        }
+
+        // Keyboard support
+        document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('modal-project-tres-pinos');
+            if (!modal || !modal.classList.contains('open')) return;
+            // Only respond if photos panel is active
+            const photosPanel = document.getElementById('panel-photos');
+            if (!photosPanel || !photosPanel.classList.contains('active')) return;
+
+            if (e.key === 'ArrowLeft') goToSlide(currentSlide - 1);
+            if (e.key === 'ArrowRight') goToSlide(currentSlide + 1);
+        });
+
+        // Autoplay
+        startAutoplay();
+
+        goToSlide(0);
+    }
+
+    function goToSlide(index) {
+        const track = document.getElementById('carousel-track');
+        if (!track) return;
+
+        const slides = track.querySelectorAll('.carousel-slide');
+        if (slides.length === 0) return;
+
+        // Wrap around
+        if (index < 0) index = totalSlides - 1;
+        if (index >= totalSlides) index = 0;
+
+        // Remove active from all
+        slides.forEach(s => s.classList.remove('active'));
+        
+        // Set new slide
+        currentSlide = index;
+        slides[currentSlide].classList.add('active');
+
+        // Update transform (sliding animation)
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        // Update dots
+        const dots = document.querySelectorAll('.carousel-dot');
+        dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+
+        // Update counter
+        const counter = document.getElementById('carousel-counter');
+        if (counter) counter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+    }
+
+    function handleSwipe() {
+        const threshold = 50;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+                goToSlide(currentSlide + 1); // Swipe left → next
+            } else {
+                goToSlide(currentSlide - 1); // Swipe right → prev
+            }
+            resetAutoplay();
+        }
+    }
+
+    function startAutoplay() {
+        stopAutoplay();
+        autoplayInterval = setInterval(() => {
+            goToSlide(currentSlide + 1);
+        }, 5000);
+    }
+
+    function stopAutoplay() {
+        if (autoplayInterval) {
+            clearInterval(autoplayInterval);
+            autoplayInterval = null;
+        }
+    }
+
+    function resetAutoplay() {
+        stopAutoplay();
+        startAutoplay();
     }
 
 });

@@ -114,7 +114,7 @@
             <div class="properties-grid" id="properties-grid">
                 <!-- Project Card: Tres Pinos (REAL PROJECT) -->
                 <article class="property-card property-card-featured" data-category="terreno" data-animate="fade-up" data-delay="0">
-                    <div class="property-image">
+                    <div class="property-image" id="tres-pinos-image-link">
                         <img src="assets/images/parcela.png" alt="Proyecto Tres Pinos" loading="lazy">
                         <div class="property-badge badge-real">Proyecto Real</div>
                         <div class="property-category-tag">Loteo Exclusivo</div>
@@ -497,8 +497,20 @@
                                 </div>
                                 <!-- Photos Panel -->
                                 <div class="media-panel" id="panel-photos">
-                                    <div class="photo-gallery-grid" id="tres-pinos-gallery">
-                                        <!-- Dynamically populated -->
+                                    <div class="carousel-wrapper" id="tres-pinos-gallery">
+                                        <div class="carousel-track" id="carousel-track">
+                                            <!-- Dynamically populated -->
+                                        </div>
+                                        <button class="carousel-btn carousel-btn-prev" id="carousel-prev" aria-label="Foto anterior">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+                                        </button>
+                                        <button class="carousel-btn carousel-btn-next" id="carousel-next" aria-label="Foto siguiente">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+                                        </button>
+                                        <div class="carousel-dots" id="carousel-dots">
+                                            <!-- Dynamically populated -->
+                                        </div>
+                                        <div class="carousel-counter" id="carousel-counter">1 / 4</div>
                                     </div>
                                 </div>
                             </div>
