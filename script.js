@@ -246,20 +246,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // ---- Mobile: Tres Pinos image tap opens detail ----
-    const tresPinosImageLink = document.getElementById('tres-pinos-image-link');
-    if (tresPinosImageLink) {
-        tresPinosImageLink.addEventListener('click', (e) => {
-            // Only on mobile / tablet
-            if (window.innerWidth <= 1024) {
-                e.preventDefault();
-                e.stopPropagation();
-                openModal('project-tres-pinos');
-            }
-        });
-        tresPinosImageLink.style.cursor = window.innerWidth <= 1024 ? 'pointer' : '';
-        window.addEventListener('resize', () => {
-            tresPinosImageLink.style.cursor = window.innerWidth <= 1024 ? 'pointer' : '';
+    // ---- Interaction: Tres Pinos card tap opens detail ----
+    const tresPinosCard = document.getElementById('card-tres-pinos');
+    if (tresPinosCard) {
+        tresPinosCard.style.cursor = 'pointer';
+        tresPinosCard.addEventListener('click', (e) => {
+            // Check if clicking the button itself to prevent double trigger or conflict
+            if (e.target.id === 'btn-tres-pinos') return;
+            
+            e.preventDefault();
+            e.stopPropagation();
+            openModal('project-tres-pinos');
         });
     }
 
