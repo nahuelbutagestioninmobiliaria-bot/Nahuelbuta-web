@@ -530,7 +530,93 @@ document.addEventListener('DOMContentLoaded', () => {
         startAutoplay();
     }
 
-    // ---- Featured Properties Carousel Logic ----
+    // ---- Search & Filter Logic ----
+    const searchInput = document.getElementById('hero-search-input');
+    const searchSuggestions = document.getElementById('search-suggestions');
+    const searchBtn = document.getElementById('hero-search-btn');
+    
+    // Sample property data for search
+    const searchableItems = [
+        { title: 'Proyecto Tres Pinos', location: 'Los Álamos', category: 'terrenos', id: 'project-tres-pinos', price: '$15.000.000' },
+        { title: 'Parcela 5.000 m²', location: 'Cañete', category: 'terrenos', price: 'UF 1.200' },
+        { title: 'Casa Moderna 220 m²', location: 'Lebu', category: 'casas', price: 'UF 4.800' },
+        { title: 'Galpón Industrial', location: 'Horcones', category: 'industrial', price: 'A convenir' },
+        { title: 'Local Comercial', location: 'Centro Lebu', category: 'comercial', price: 'UF 18/mes' },
+        { title: 'Loteo Forestal', location: 'Los Álamos', category: 'terrenos', price: 'UF 450' }
+    ];
+
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const val = e.target.value.toLowerCase();
+            if (val.length < 1) {
+                searchSuggestions.style.display = 'none';
+                return;
+            }
+
+            const matches = searchableItems.filter(item => 
+                item.title.toLowerCase().includes(val) || 
+                item.location.toLowerCase().includes(val)
+            ).slice(0, 5);
+
+            if (matches.length > 0) {
+                searchSuggestions.innerHTML = matches.map(item => `
+                    <div class="suggestion-item" data-id="${item.id || ''}" data-filter="${item.category}">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/></svg>
+                        <span><strong>${item.title}</strong> - ${item.location}</span>
+                    </div>
+                `).join('');
+                searchSuggestions.style.display = 'block';
+            } else {
+                searchSuggestions.style.display = 'none';
+            }
+        });
+
+        // Click on suggestion
+        searchSuggestions.addEventListener('click', (e) => {
+            const item = e.target.closest('.suggestion-item');
+            if (item) {
+                const modalId = item.getAttribute('data-id');
+                const filter = item.getAttribute('data-filter');
+                
+                if (modalId) {
+                    openModal(modalId);
+                } else {
+                    // Scroll to properties and filter
+                    const propsSection = document.getElementById('properties');
+                    if (propsSection) {
+                        const offset = navbar.offsetHeight + 20;
+                        window.scrollTo({ top: propsSection.offsetTop - offset, behavior: 'smooth' });
+                        // Trigger filter button
+                        const filterBtn = document.querySelector(`.filter-btn[data-filter="${filter}"]`);
+                        if (filterBtn) filterBtn.click();
+                    }
+                }
+                searchInput.value = item.querySelector('span').textContent.split(' - ')[0];
+                searchSuggestions.style.display = 'none';
+            }
+        });
+
+        // Hide suggestions on outside click
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !searchSuggestions.contains(e.target)) {
+                searchSuggestions.style.display = 'none';
+            }
+        });
+
+        // Search button click
+        searchBtn.addEventListener('click', () => {
+            const val = searchInput.value;
+            if (val) {
+                const propsSection = document.getElementById('properties');
+                if (propsSection) {
+                    const offset = navbar.offsetHeight + 20;
+                    window.scrollTo({ top: propsSection.offsetTop - offset, behavior: 'smooth' });
+                }
+            }
+        });
+    }
+
+    // ---- Featured Properties Carousel Logic (Hero Integrated) ----
     const fcTrack = document.getElementById('fc-track');
     const fcPrev = document.getElementById('fc-prev');
     const fcNext = document.getElementById('fc-next');
@@ -539,8 +625,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (fcTrack && fcCards.length > 0) {
         let fcIndex = 0;
-        let isDragging = false;
-        let startX, scrollLeft;
         let autoplayActive = true;
         
         // Setup Dots
@@ -559,21 +643,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const fcDots = document.querySelectorAll('.fc-dot');
         
         function updateFC() {
-            const cardWidth = fcCards[0].offsetWidth + 24; // width + gap
+            const isMobile = window.innerWidth <= 768;
+            const gap = 24;
+            const cardWidth = fcCards[0].offsetWidth + gap;
+            
+            // On mobile, card width might vary, but centered logic helps
             const containerWidth = fcTrack.parentElement.offsetWidth;
             const maxScroll = fcTrack.scrollWidth - containerWidth;
             
-            // Calculate offset
             let offset = fcIndex * cardWidth;
-            
-            // Ensure we don't scroll past the end
-            if (offset > maxScroll) {
-                offset = maxScroll;
-            }
+            if (offset > maxScroll) offset = maxScroll;
+            if (offset < 0) offset = 0;
             
             fcTrack.style.transform = `translateX(-${offset}px)`;
             
-            // Update dots active state
+            // Update dots
             fcDots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === fcIndex);
             });
@@ -616,49 +700,47 @@ document.addEventListener('DOMContentLoaded', () => {
         // Pause on hover
         fcTrack.parentElement.addEventListener('mouseenter', () => autoplayActive = false);
         fcTrack.parentElement.addEventListener('mouseleave', () => autoplayActive = true);
-        
-        // Drag / Swipe support
-        const viewport = fcTrack.parentElement;
-        
-        viewport.addEventListener('mousedown', (e) => {
-            isDragging = true;
+
+        // Modal triggers for fc-cards (handles clicks on info or image)
+        fcCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                // If it's a specific link inside, let it bubble if needed, but here they both open details
+                const modalId = card.getAttribute('data-modal');
+                if (modalId) {
+                    openModal(modalId);
+                } else {
+                    // Default behavior for other cards: scroll to properties
+                    const propsSection = document.getElementById('properties');
+                    if (propsSection) {
+                        const offset = navbar.offsetHeight + 20;
+                        window.scrollTo({ top: propsSection.offsetTop - offset, behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Drag support simplified for hero carousel
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        fcTrack.parentElement.addEventListener('mousedown', (e) => {
+            isDown = true;
             startX = e.pageX - fcTrack.offsetLeft;
             fcTrack.style.transition = 'none';
         });
-        
-        window.addEventListener('mouseup', () => {
-            if (!isDragging) return;
-            isDragging = false;
+        fcTrack.parentElement.addEventListener('mouseleave', () => isDown = false);
+        fcTrack.parentElement.addEventListener('mouseup', () => {
+            isDown = false;
             fcTrack.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
-            
-            // Snap to nearest card
             const cardWidth = fcCards[0].offsetWidth + 24;
             const currentOffset = Math.abs(parseInt(fcTrack.style.transform.replace('translateX(-', '').replace('px)', '')) || 0);
             fcIndex = Math.round(currentOffset / cardWidth);
             updateFC();
         });
         
-        viewport.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
-            const x = e.pageX - viewport.offsetLeft;
-            const walk = (x - startX) * 2;
-            // This is complex for transform based, skipping detailed drag for now but snap works
-        });
-
-        // Modal triggers for fc-cards
-        fcCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const modalId = card.getAttribute('data-modal');
-                if (modalId) {
-                    openModal(modalId);
-                }
-            });
-        });
-
-        // Initial update
         window.addEventListener('resize', updateFC);
-        updateFC();
+        setTimeout(updateFC, 200); // Wait for layout
     }
 
 });
