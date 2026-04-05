@@ -1,0 +1,17 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&amp;display=swap');
+      .logo-mark { font-family: 'Outfit', sans-serif; font-size: 80px; font-weight: 700; fill: #8fbc6a; }
+    </style>
+  </defs>
+  
+  <!-- Stylized N -->
+  <text x="30" y="85" class="logo-mark">N</text>
+  
+  <!-- Gold Dot on N -->
+  <circle cx="28" cy="80" r="5" fill="#c9a84c" opacity="0.9"/>
+  
+  <!-- Roof above N area / as a symbol -->
+  <path d="M40 25L60 10L80 25" stroke="#c9a84c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
