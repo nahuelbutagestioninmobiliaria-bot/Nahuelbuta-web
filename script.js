@@ -419,6 +419,21 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (videoSection) {
             videoSection.style.display = 'none';
         }
+
+        // 5. 360 Tour Interaction Logic
+        const tourOverlay = document.getElementById('tour-overlay');
+        const tourShell = document.querySelector('.media-shell-tour');
+        if (tourOverlay && tourShell) {
+            // Reset state
+            tourOverlay.classList.remove('hidden');
+            tourShell.classList.remove('tour-active');
+
+            tourOverlay.onclick = (e) => {
+                e.stopPropagation();
+                tourOverlay.classList.add('hidden');
+                tourShell.classList.add('tour-active');
+            };
+        }
     }
 
     // ---- Premium Carousel System ----
