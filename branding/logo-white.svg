@@ -1,17 +1,17 @@
-<svg width="400" height="120" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="600" height="180" viewBox="0 0 600 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    Nahuelbuta Gestión Inmobiliaria
+    Official Monochrome WHITE Logo
+  -->
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&amp;family=Inter:wght@500&amp;display=swap');
-      .logo-name { font-family: 'Outfit', sans-serif; font-size: 48px; font-weight: 700; fill: #ffffff; letter-spacing: -1px; }
-      .logo-sub { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; fill: #ffffff; text-transform: uppercase; letter-spacing: 4px; }
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&amp;family=Inter:wght@500&amp;display=swap');
+      .logo-name { font-family: 'Outfit', sans-serif; font-size: 72px; font-weight: 700; fill: #ffffff; letter-spacing: -2px; }
+      .logo-sub { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 500; fill: #ffffff; text-transform: uppercase; letter-spacing: 6px; }
     </style>
   </defs>
-  
-  <!-- Logo Name: Nahuelbuta -->
-  <text x="50" y="65" class="logo-name">Nahuelbuta</text>
-  
-  <!-- Logo Sub: Gestión Inmobiliaria -->
-  <text x="52" y="95" class="logo-sub">Gestión Inmobiliaria</text>
-  
-  <!-- Optional: Subtle details in silver/white if desired, but here all white is best for print/darkbg -->
+  <text x="40" y="90" class="logo-name">Nahuelbuta</text>
+  <circle cx="36" cy="86" r="4.5" fill="#ffffff" opacity="0.8"/>
+  <path d="M102 48L122 32L142 48" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="45" y="135" class="logo-sub">GESTIÓN INMOBILIARIA</text>
 </svg>

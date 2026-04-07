@@ -185,6 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Populate Tres Pinos Data if it's the right modal
             if (id === 'project-tres-pinos' && window.TRES_PINOS_DATA) {
                 populateTresPinosData();
+                initializeMediaSuite();
                 // Initialize carousel after gallery is populated
                 setTimeout(() => initCarousel(), 100);
             }
@@ -337,10 +338,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ---- Tres Pinos Dynamic Population ----
-    // initializeMediaSuite is no longer needed as we move to a scroll-based layout
-    // for project details, but keeping the signature if needed for other modals in future.
     function initializeMediaSuite() {
-        // Obsolete for current design
+        const mediaTabs = document.querySelectorAll('.media-tab');
+        const mediaPanels = document.querySelectorAll('.media-panel');
+        
+        mediaTabs.forEach(tab => {
+            tab.onclick = () => {
+                const target = tab.getAttribute('data-target');
+                mediaTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                mediaPanels.forEach(p => p.classList.remove('active'));
+                document.getElementById(`panel-${target}`).classList.add('active');
+            };
+        });
     }
 
     function populateTresPinosData() {

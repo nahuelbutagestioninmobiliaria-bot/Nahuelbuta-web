@@ -1,7 +1,7 @@
 <svg width="400" height="120" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&amp;family=Inter:wght@500&amp;display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&amp;amp;family=Inter:wght@500&amp;amp;display=swap');
       .logo-name { font-family: 'Outfit', sans-serif; font-size: 48px; font-weight: 700; fill: #080e09; letter-spacing: -1px; }
       .logo-sub { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; fill: #080e09; text-transform: uppercase; letter-spacing: 4px; }
       .accent { fill: #8fbc6a; }

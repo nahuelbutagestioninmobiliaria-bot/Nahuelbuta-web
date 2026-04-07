@@ -1,42 +1,40 @@
 # Kit de Marca: Nahuelbuta Gestión Inmobiliaria
 
-Este directorio contiene los activos visuales oficiales de la marca en formato vectorial (SVG). Los vectores son ideales para cualquier tamaño, desde una tarjeta personal hasta un cartel gigante en carretera, ya que nunca pierden calidad.
+Este directorio contiene los activos oficiales de la marca, replicando exactamente el diseño que aparece en el sitio web (el logo con el detalle de la montaña sobre la 'a' y la 'N' verde).
 
-## 🎨 Paleta de Colores Oficial
+## 📂 Archivos Disponibles (Versión PNG para Pegar)
 
-| Elemento | Color | Hexadecimal | Uso sugerido |
-| :--- | :--- | :--- | :--- |
-| **Verde Acento** | Bosque Arauco | `#8FBC6A` | Color principal del logo (N) y botones. |
-| **Dorado** | Oro Sol | `#C9A84C` | Detalles (punto y techo), resalta la exclusividad. |
-| **Fondo Oscuro** | Verde Medianoche | `#080E09` | Fondo principal de la web y documentos premium. |
-| **Texto Primario** | Lino Natural | `#EAE5DC` | Texto sobre fondos oscuros (Blanco hueso). |
+Estos archivos son de alta resolución (2000px) y están listos para ser usados en Word, PowerPoint, WhatsApp o redes sociales.
 
----
+| Versión | Archivo | Uso Recomendado |
+| :--- | :--- | :--- |
+| **Negro Total** | [**logo-black.png**](logo-black.png) | Documentos impresos, hojas blancas, Word. |
+| **Blanco Total** | [**logo-white.png**](logo-white.png) | Sobre fotos oscuras, fondos negros o colores fuertes. |
+| **Premium (Texto Oscuro)** | [**logo-color-dark.png**](logo-color-dark.png) | El logo oficial con colores sobre fondo blanco (Cartas oficiales). |
+| **Premium (Texto Claro)** | [**logo-color-light.png**](logo-color-light.png) | El logo original de la web, para fondos oscuros. |
 
-## 📂 Archivos y Usos
+## 📐 Archivos Vectoriales (SVG) - Alta Calidad
+Para imprentas, letreros o diseñadores. Nunca pierden calidad al agrandarlos.
 
-### 1. `logo-full-color.svg`
-**Uso:** Papelería, tarjetas, sitios web con fondo claro y documentos oficiales a color.
-*   **Diseño:** Contiene la "N" verde, detalles dorados y el nombre de la empresa en color bosque oscuro.
-
-### 2. `logo-white.svg` (Negativo)
-**Uso:** Redes sociales (sobre fotos de paisajes), presentaciones sobre fondos oscuros y la propia cabecera de la web.
-*   **Diseño:** Todo el logo en color blanco hueso para máxima visibilidad.
-
-### 3. `logo-black.svg`
-**Uso:** Impresiones láser, documentos en blanco y negro, y sellos.
-*   **Diseño:** Versión monocromática sólida.
-
-### 4. `logo-symbol.svg`
-**Uso:** Favicon de la web, icono de perfil en Instagram/WhatsApp, y marca de agua en fotos.
-*   **Diseño:** Solo la "N" icónica con su punto dorado y el techo, sin el nombre completo.
+- [Logo Original Full Color (SVG)](logo-full-color.svg)
+- [Logo Negro (SVG)](logo-black.svg)
+- [Logo Blanco (SVG)](logo-white.svg)
+- [Símbolo / Icono (N)](logo-symbol.svg)
 
 ---
 
-## 🛠️ Notas para el Diseñador / Imprentero
-- **Tipografía Display:** Outfit (Bold - 700)
-- **Tipografía Body/Sub:** Inter (Medium - 500)
-- **Formato:** Los archivos son SVG nativos. Pueden abrirse con Adobe Illustrator, Figma, Canva o cualquier navegador web.
+## 🎨 Especificaciones Técnicas
+
+| Elemento | Color | Hex |
+| :--- | :--- | :--- |
+| **Verde Nahuelbuta** | Bosque | `#8FBC6A` |
+| **Dorado Arauco** | Oro | `#C9A84C` |
+| **Texto (Oscuro)** | Carbón | `#080E09` |
+| **Texto (Claro)** | Lino | `#EAE5DC` |
+
+**Tipografías:**
+- Nahuelbuta: **Outfit** (Bold)
+- Gestión Inmobiliaria: **Inter** (Medium) con espaciado expandido.
 
 ---
-*Producido por Antigravity para Nahuelbuta Gestión Inmobiliaria.*
+*Ubicación: `website/branding/`*

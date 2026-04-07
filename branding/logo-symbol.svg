@@ -1,7 +1,7 @@
 <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&amp;display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&amp;amp;display=swap');
       .logo-mark { font-family: 'Outfit', sans-serif; font-size: 80px; font-weight: 700; fill: #8fbc6a; }
     </style>
   </defs>

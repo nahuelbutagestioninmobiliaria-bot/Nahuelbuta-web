@@ -542,85 +542,19 @@
             <button class="modal-close" id="close-tres-pinos">&times;</button>
             <div class="modal-body">
                 <div class="project-detail-layout">
-                    <!-- Project Content Header -->
-                    <div class="project-header">
-                        <div class="project-header-left">
-                            <span class="section-tag">Proyecto Exclusivo</span>
-                            <h2 class="project-title">Proyecto <span class="text-accent">Tres Pinos</span></h2>
-                            <div class="project-location-badge">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-                                    <circle cx="12" cy="10" r="3"/>
-                                </svg>
-                                Los Álamos, Provincia de Arauco
+                    <!-- Left: 360 Viewer + Info -->
+                    <div class="project-main">
+                        <span class="section-tag">Tour Virtual Drone</span>
+                        <h2 class="section-title">Proyecto <span class="text-accent">Tres Pinos</span></h2>
+                        
+                        <div class="media-suite">
+                            <div class="media-nav">
+                                <button class="media-tab active" data-target="360">Recorrido 360°</button>
+                                <button class="media-tab" data-target="photos">Galería de Fotos</button>
                             </div>
-                        </div>
-                        <div class="project-header-right">
-                            <div class="project-price-tag">
-                                <span class="price-label">Desde</span>
-                                <span class="price-value">$15.000.000</span>
-                                <span class="price-note">Lanzamiento Fase 1</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Main Gallery (Priority #1) -->
-                    <div class="project-gallery-wrapper">
-                        <div class="carousel-wrapper" id="tres-pinos-gallery">
-                            <div class="carousel-track" id="carousel-track">
-                                <!-- Dynamically populated -->
-                            </div>
-                            <button class="carousel-btn carousel-btn-prev" id="carousel-prev" aria-label="Foto anterior">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
-                            </button>
-                            <button class="carousel-btn carousel-btn-next" id="carousel-next" aria-label="Foto siguiente">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-                            </button>
-                            <div class="carousel-dots" id="carousel-dots">
-                                <!-- Dynamically populated -->
-                            </div>
-                            <div class="carousel-counter" id="carousel-counter">1 / 4</div>
-                        </div>
-                    </div>
-
-                    <div class="project-content-grid">
-                        <div class="project-main-info">
-                            <div class="project-description">
-                                <h3>Descripción del Proyecto</h3>
-                                <p>
-                                    Estratégicamente ubicado en Los Álamos, el <strong>Proyecto Tres Pinos</strong> representa la vanguardia 
-                                    del desarrollo inmobiliario en la región. Un refugio de modernidad y naturaleza diseñado para 
-                                    quienes buscan exclusividad, seguridad y una inversión con alta plusvalía.
-                                </p>
-                            </div>
-
-                            <div class="project-features-grid">
-                                <div class="feature-item">
-                                    <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></div>
-                                    <span>Ubicación Estratégica</span>
-                                </div>
-                                <div class="feature-item">
-                                    <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg></div>
-                                    <span>Rol Propio Individual</span>
-                                </div>
-                                <div class="feature-item">
-                                    <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-                                    <span>Luz y Agua</span>
-                                </div>
-                                <div class="feature-item">
-                                    <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-                                    <span>Sector Consolidado</span>
-                                </div>
-                            </div>
-
-                            <!-- Tour 360 Section (Dedicated) -->
-                            <div class="virtual-tour-section" id="section-360">
-                                <div class="section-header-left">
-                                    <span class="section-tag">Experiencia Inmersiva</span>
-                                    <h3>Recorrido Virtual <span class="text-accent">360°</span></h3>
-                                    <p>Explore el terreno desde el aire como si estuviera ahí mismo.</p>
-                                </div>
-                                <div class="media-shell-tour">
+                            <div class="media-shell">
+                                <!-- 360 Panel -->
+                                <div class="media-panel active" id="panel-360">
                                     <iframe 
                                         id="kuula-iframe"
                                         width="100%" 
@@ -631,24 +565,45 @@
                                         data-src="https://kuula.co/share/LGgDG?fs=1&vr=1&zoom=1&autorotate=0.15">
                                     </iframe>
                                 </div>
-                            </div>
-
-                            <!-- Master Plan Section -->
-                            <div class="master-plan-section">
-                                <div class="section-header-left">
-                                    <span class="section-tag">Arquitectura</span>
-                                    <h3>Master Plan <span class="text-accent">del Loteo</span></h3>
-                                    <p>Distribución estratégica de los 9 sitios exclusivos y áreas comunes de circulación.</p>
-                                </div>
-                                <div class="plan-img-wrap-premium">
-                                    <img src="assets/images/tres_pinos_plan.jpg" alt="Plano de Loteo Tres Pinos" loading="lazy">
+                                <!-- Photos Panel -->
+                                <div class="media-panel" id="panel-photos">
+                                    <div class="carousel-wrapper" id="tres-pinos-gallery">
+                                        <div class="carousel-track" id="carousel-track">
+                                            <!-- Dynamically populated -->
+                                        </div>
+                                        <button class="carousel-btn carousel-btn-prev" id="carousel-prev" aria-label="Foto anterior">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+                                        </button>
+                                        <button class="carousel-btn carousel-btn-next" id="carousel-next" aria-label="Foto siguiente">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+                                        </button>
+                                        <div class="carousel-dots" id="carousel-dots">
+                                            <!-- Dynamically populated -->
+                                        </div>
+                                        <div class="carousel-counter" id="carousel-counter">1 / 4</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Sidebar in the new grid will move down automatically on mobile -->
+                        <div class="project-description">
+                            <h3>Sobre el Proyecto</h3>
+                            <p>
+                                Estratégicamente ubicado en Los Álamos, el <strong>Proyecto Tres Pinos</strong> representa la vanguardia 
+                                del desarrollo inmobiliario en la región. Un refugio de modernidad y naturaleza diseñado para 
+                                quienes buscan exclusividad y sostenibilidad.
+                            </p>
+                        </div>
+
+                        <!-- Master Plan Section -->
+                        <div class="master-plan-box" data-animate="fade-up">
+                            <h4>Master Plan del Loteo</h4>
+                            <p class="section-subtitle">Distribución estratégica de los 9 sitios exclusivos y áreas comunes.</p>
+                            <div class="plan-img-wrap">
+                                <img src="assets/images/tres_pinos_plan.jpg" alt="Plano de Loteo Tres Pinos" loading="lazy">
+                            </div>
+                        </div>
                     </div>
-                </div>
 
                     <!-- Right: Specs + Table -->
                     <div class="project-sidebar">
