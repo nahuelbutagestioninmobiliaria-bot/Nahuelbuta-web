@@ -1951,7 +1951,7 @@ a {
 /* Priority Gallery */
 .project-gallery-wrapper {
     width: 100%;
-    height: 450px;
+    height: 380px;
     border-radius: var(--radius-xl);
     overflow: hidden;
     box-shadow: var(--shadow-premium);
@@ -1989,16 +1989,18 @@ a {
 /* Features Grid */
 .project-features-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
 }
 
 .feature-item {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 16px;
+    text-align: center;
+    gap: 12px;
     background: var(--color-bg-card);
-    padding: 20px;
+    padding: 16px 10px;
     border-radius: var(--radius-md);
     border: 1px solid var(--color-border);
     transition: var(--transition-premium);
@@ -2011,9 +2013,9 @@ a {
 }
 
 .feature-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
     background: rgba(143, 188, 106, 0.1);
     color: var(--color-accent);
     display: flex;
@@ -2021,10 +2023,16 @@ a {
     justify-content: center;
 }
 
+.feature-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
 .feature-item span {
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.85rem;
     color: var(--color-text-primary);
+    line-height: 1.2;
 }
 
 /* Virtual Tour & Video Section */
@@ -2048,7 +2056,7 @@ a {
 }
 
 .media-shell-tour, .media-shell-video {
-    height: 400px;
+    height: 320px;
     border-radius: var(--radius-xl);
     overflow: hidden;
     background: #000;
@@ -2177,12 +2185,22 @@ a {
 
 /* Mobile specific height adjustments */
 @media (max-width: 768px) {
+    .project-features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
     .project-gallery-wrapper {
-        height: 300px;
+        height: 250px;
     }
     .media-shell-tour, .media-shell-video {
-        height: 350px;
+        height: 280px;
     }
+    .modal-content {
+        overflow-x: hidden;
+    }
+}
+
+body {
+    overflow-x: hidden;
 }
 
 .plan-img-wrap-premium {
