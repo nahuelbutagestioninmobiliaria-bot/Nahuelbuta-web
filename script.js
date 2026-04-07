@@ -176,16 +176,19 @@ document.addEventListener('DOMContentLoaded', () => {
     function openModal(id) {
         const m = document.getElementById(`modal-${id}`);
         if (m) {
-            // Lazy load iframe if it's a project modal
-            const iframe = m.querySelector('iframe[data-src]');
-            if (iframe) {
-                iframe.src = iframe.getAttribute('data-src');
-            }
-
             // Populate Tres Pinos Data if it's the right modal
             if (id === 'project-tres-pinos' && window.TRES_PINOS_DATA) {
                 populateTresPinosData();
-                // Initialize carousel after gallery is populated
+            }
+
+            // Lazy load iframes (except technical ones like youtube that we handle on click)
+            const iframes = m.querySelectorAll('iframe[data-src]:not(#project-youtube-iframe)');
+            iframes.forEach(iframe => {
+                iframe.src = iframe.getAttribute('data-src');
+            });
+
+            // Initialize carousel after data is populated
+            if (id === 'project-tres-pinos') {
                 setTimeout(() => initCarousel(), 100);
             }
 
@@ -203,11 +206,13 @@ document.addEventListener('DOMContentLoaded', () => {
             m.classList.remove('open');
             setTimeout(() => {
                 m.style.display = 'none';
-                // Stop iframe from playing in background
-                const iframe = m.querySelector('iframe');
-                if (iframe && iframe.getAttribute('data-src')) {
-                    iframe.src = 'about:blank';
-                }
+                // Stop iframes from playing in background
+                const iframes = m.querySelectorAll('iframe');
+                iframes.forEach(iframe => {
+                    if (iframe.getAttribute('data-src')) {
+                        iframe.src = 'about:blank';
+                    }
+                });
             }, 400);
             document.body.style.overflow = '';
         }
@@ -382,6 +387,38 @@ document.addEventListener('DOMContentLoaded', () => {
         const mapBtnLink = document.getElementById('tres-pinos-map-link');
         if (mapIframe && data.mapUrl) mapIframe.src = data.mapUrl;
         if (mapBtnLink && data.mapLink) mapBtnLink.href = data.mapLink;
+
+        // 4. Video
+        const videoIframe = document.getElementById('project-youtube-iframe');
+        const videoSection = document.getElementById('section-video');
+        const videoCover = document.getElementById('video-cover');
+        
+        if (videoIframe && data.videoUrl) {
+            // Extract Youtube ID for thumbnail
+            const videoId = data.videoUrl.split('/').pop().split('?')[0];
+            if (videoCover) {
+                videoCover.style.backgroundImage = `url(https://img.youtube.com/vi/${videoId}/maxresdefault.jpg)`;
+                videoCover.style.display = 'flex';
+                
+                // Click to play
+                videoCover.onclick = () => {
+                    videoCover.style.display = 'none';
+                    videoIframe.style.display = 'block';
+                    // Load with autoplay
+                    const autoplayUrl = data.videoUrl.includes('?') 
+                        ? `${data.videoUrl}&autoplay=1` 
+                        : `${data.videoUrl}?autoplay=1`;
+                    videoIframe.src = autoplayUrl;
+                };
+            }
+            
+            videoIframe.setAttribute('data-src', data.videoUrl);
+            videoIframe.style.display = 'none'; // Ensure hidden initially
+            
+            if (videoSection) videoSection.style.display = 'block';
+        } else if (videoSection) {
+            videoSection.style.display = 'none';
+        }
     }
 
     // ---- Premium Carousel System ----

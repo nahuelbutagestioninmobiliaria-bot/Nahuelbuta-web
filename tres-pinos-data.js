@@ -9,6 +9,7 @@ const TRES_PINOS_DATA = {
     description: "9 sitios exclusivos ubicados en la comuna de Los Álamos. Una oportunidad única de inversión con alta plusvalía y entorno natural privilegiado. Lotes urbanizados con rol propio.",
     mapUrl: "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3181.49!2d-73.4113!3d-37.6299!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzfCsDM3JzQ3LjgiUyA3M8KwMjQnNDAuOCJX!5e0!3m2!1ses-419!2scl!4v1712072000000!5m2!1ses-419!2scl",
     mapLink: "https://maps.app.goo.gl/4TJDJxCmQu44EcrS7",
+    videoUrl: "https://www.youtube.com/embed/_HynBN2WnsU",
     planImage: "assets/images/tres_pinos_plan.jpg",
     gallery: [
         { url: "assets/images/tres_pinos_lotes_aereo.jpg", alt: "Vista aérea de los 9 lotes del proyecto" },
